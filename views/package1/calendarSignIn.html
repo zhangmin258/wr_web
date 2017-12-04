@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<meta content="yes" name="apple-mobile-web-app-capable"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="email=no" name="format-detection"/>
+	<meta name="_xsrf" content="{{.xsrf_token}}" />
+	<meta name="appToken" content="{{.token}}" />
+	<meta name="packageId" content="{{.PackageId}}" />
+	<title>签到日历</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/newReset.css"/>
+	<style type="text/css">
+		#container{ width:100%; height:100%; background-color:#fff; overflow:auto; }
+		header{ width:100%; height:8.76rem; color:#fff; text-align:center; background:#fff url(../../static/img/package1/riliBG.png) no-repeat; background-size:100% auto; overflow:hidden; }
+		header h1{ font:1.24rem "微软雅黑"; margin-top:1.73rem; }
+		header h1 b{ font:2.34rem "微软雅黑"; }
+		header p{ font:0.75rem "黑体"; }
+		.rili{ width:100%; height:auto; background-color:#fff; overflow:hidden; }
+		.rili>ul{ width:14.35rem; height:auto; margin:0rem auto; overflow:auto; }
+		.rili>ul li{ float:left; width:2rem; height:1.8rem; text-align:center; font:0.6rem/2rem "微软雅黑"; color:#1a1a1a; margin:0.02rem; position:relative; overflow:hidden; }
+		.riliList li>div{ display:none; width:2rem; height:1.8rem; position:absolute; top:0; left:0; z-index:2; background:url(../../static/img/package1/peasBlue.png) no-repeat center 0.1rem; background-size:1.4rem; }
+		.riliList li>span{ display:inline-block; width:2rem; height:1.8rem; position:absolute; top:0; left:0; z-index:10; }
+	</style>
+</head>
+<body>
+	<div id="container">
+        <header>
+        	<h1><b id="SignCount">4</b> 天</h1>
+        	<p>本月已累计签到</p>
+        </header>
+        <div class="rili">
+        	<ul class="workDay">
+        		<li>日</li>
+        		<li>一</li>
+        		<li>二</li>
+        		<li>三</li>
+        		<li>四</li>
+        		<li>五</li>
+        		<li>六</li>
+        	</ul>
+            <ul class="riliList" id="qiandaoList">
+            	
+            </ul>
+        </div>
+	</div>
+</body>
+</html> 
+<script type="text/javascript" src="../../static/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/lib/DataAlgorithm.js"></script>
+<script type="text/javascript" src="../../static/js/package1/calendarSignIn.js"></script>

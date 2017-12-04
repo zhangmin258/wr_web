@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<meta name="_xsrf" content="{{.xsrf_token}}" />
+	<meta name="appToken" content="{{.token}}" />
+	<meta name="packageId" content="{{.PackageId}}" />
+	<title>签到</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/newReset.css"/>
+	<style type="text/css">
+		#container{ width:100%; height:100%; background-color:#f7f7f7; display:-webkit-box; -webkit-box-orient:block-axis; }
+		#container .main{ width:100%; height:100%; -webkit-box-flex:1; position:relative; overflow:hidden; }
+		header{ width:100%; height:6.88rem;font:0.56rem "微软雅黑"; color:#fff; text-align:center; background:#fff url(../../static/img/package1/signInBG.png) no-repeat; background-size:100%; position:relative; overflow:hidden; }
+		header .floatL{ position:absolute; top:0.6rem; left:0.6rem; }
+		header .floatL>img{ width:0.6rem; height:0.6rem; margin-top:-0.1rem; margin-right:0.4rem; }
+		header .floatR{ position:absolute; top:0.6rem; right:0.6rem; }
+		header .floatR>img{ width:auto; height:0.56rem; margin-top:-0.1rem; margin-left:0.2rem; }
+		header .signIn{ width:3.76rem; height:3.76rem; margin:1.28rem auto 0.48rem; }
+		header h1{ font:0.56rem "微软雅黑"; }
+		.remind{ width:100%; height:1.76rem; padding:0 0.6rem; box-sizing:border-box; font:0.56rem/1.76rem "微软雅黑"; color:#333; border-bottom:1px solid #e5e5e5; }
+		.remind>img{ width:0.6rem; height:0.6rem; margin-top:-0.1rem; margin-right:0.2rem; }
+		.remind>div{ float:right; }
+		.remind>div>b{ color:#16bde1; margin-right:0.2rem; }
+		.remind>div>img{ width:1.6rem; height:auto; }
+		.navBtn{ width:100%; height:auto; padding-top:0.5rem; text-align:center; font:0.48rem "微软雅黑"; color:#033333; background:#fff; border-bottom:1px solid #e5e5e5; margin-bottom:0.4rem; overflow:hidden; }
+		.navBtn>div{ float:left; width:33.33%; height:auto; margin-bottom:0.5rem; overflow:hidden; }
+		.navBtn>div>img{ width:2.68rem; height:2.4rem; margin-bottom:0.4rem; }
+		.earnPeasUl{ width:100%; height:auto; padding-left:0.6rem; box-sizing:border-box; background:#fff; border-top:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; }
+		.earnPeasUl li{ width:100%; height:2rem; padding-right:0.6rem; box-sizing:border-box; font:0.56rem/2rem "微软雅黑"; color:#333; border-bottom:1px solid #e5e5e5; }
+		.earnPeasUl li:last-of-type{ border:none; }
+		.earnPeasUl li>p{ float:right; }
+		.earnPeasUl li>p>span{ color:#999; }
+		.earnPeasUl li>p>img{ width:auto; height:0.64rem; margin-top:-0.1rem; margin-left:0.1rem; }
+		
+		footer{ width:100%; height:2rem; font:0.72rem/2rem "微软雅黑"; text-align:center; color:#fff; background:#0191ff; }
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="main">
+			<header>
+	        	<p class="floatL" id="goCalendar"><img src="../../static/img/package1/riliLogo.png"/>签到日历</p>
+	        	<p class="floatR">我的融豆:<b id="ScoreCount"></b><img src="../../static/img/package1/peasWhite.png"/></p>
+	        	<img src="../../static/img/package1/signIn.png" class="signIn" id="signIn" />
+	        	<h1>本月已累计签到<span id="SignCount">0</span>天</h1>
+	        </header>
+	        <div class="remind" style="background:#f7f7f7;">
+	        	<img src="../../static/img/package1/peasYellow.png" />
+	        	<b>累计签到可以获得额外奖励</b>
+	        	<div>
+	        		<b>签到提醒</b>
+	        		<img src="../../static/img/package1/alertClose.png" id="goRemind"/>
+	        	</div>
+	        </div>
+	        <div class="navBtn" id="navBtn">
+	        	<div id="days3" pCount="20">
+	        		<img src="../../static/img/package1/3CanGet.png" />
+	        		<p>累计3天</p>
+	        	</div>
+	        	<div id="days7" pCount="30">
+	        		<img src="../../static/img/package1/7CanGet.png" />
+	        		<p>累计7天</p>
+	        	</div>
+	        	<div id="days12" pCount="40">
+	        		<img src="../../static/img/package1/12CanGet.png" />
+	        		<p>累计12天</p>
+	        	</div>
+	        	<div id="days18" pCount="40">
+	        		<img src="../../static/img/package1/18CanGet.png" />
+	        		<p>累计18天</p>
+	        	</div>
+	        	<div id="days25" pCount="40">
+	        		<img src="../../static/img/package1/25CanGet.png" />
+	        		<p>累计25天</p>
+	        	</div>
+	        </div>
+	        <ul class="earnPeasUl">
+	        	<li id="goEarnPeas">
+	        		<label>做任务赚融豆</label>
+	        		<p>
+	        			<span><b id="taskCount"></b>个任务可完成</span>
+	        			<img src="../../static/img/package1/turnRight.png" />
+	        		</p>
+	        	</li>
+	        	<!--<li>
+	        		<label>邀请好友送融豆</label>
+	        		<p>
+	        			<span>赶紧呼叫好友</span>
+	        			<img src="../static/img/turnRight.png" />
+	        		</p>
+	        	</li>-->
+	        </ul>
+		</div>
+        <footer id="goShoppingMall">前往融豆商城</footer>
+	</div>
+</body>
+</html> 
+<script type="text/javascript" src="../../static/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/lib/DataAlgorithm.js"></script>
+<script type="text/javascript" src="../../static/js/package1/signIn.js"></script>

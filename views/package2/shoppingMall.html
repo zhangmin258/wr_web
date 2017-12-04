@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<meta content="yes" name="apple-mobile-web-app-capable"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="email=no" name="format-detection"/>
+	<meta name="_xsrf" content="{{.xsrf_token}}" />
+	<meta name="appToken" content="{{.token}}" />
+	<meta name="packageId" content="{{.PackageId}}" />
+	<title>融豆商城</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/newReset.css"/>
+	<style type="text/css">
+		#container{ width:100%; height:auto; background:#f7f7f7; overflow-x:hidden; position:relative; }
+		header{ width:100%; height:5.6rem; text-align:center; color:#fff; background:url(../../static/img/package2/shopBG.png) no-repeat; background-size:100%; overflow:hidden; }
+		header>div{ width:2.48rem; height:2.48rem; background:#fff; border-radius:100%; text-align:center; margin:0.42rem auto 0.2rem; overflow:hidden; position:relative; }
+		header #userLogo{ width:auto; height:2.48rem; position:absolute; top:0; left:0; }
+		header h1{ font:0.56rem "微软雅黑"; }
+		header h1>img{ width:0.6rem; height:0.6rem; margin-top:-0.15rem; margin-left:0.36rem; }
+		
+		.RC{ width:13.8rem; height:2.4rem; background:#fff; box-shadow:0 0 0.2rem #ccc; position:absolute; top:4.4rem; left:0.6rem; }
+		.RC>div{ float:left; width:50%; height:100%; font:0.56rem/2.4rem "微软雅黑"; color:#474747; text-align:center; }
+		.RC>div img{ width:1.36rem; height:1.36rem; border-radius:100%; }
+		
+		.nav{ width:100%; height:auto; padding:0.52rem 0 0.4rem; background:#fff; margin:1.8rem 0 0.4rem; border-top:1px solid #eaeaea; border-bottom:1px solid #eaeaea; overflow:auto; }
+		.nav>div{ display:inline-block; float:left; overflow:hidden; width:25%; text-align:center; font:0.48rem "微软雅黑"; color:#242424; }
+		.nav>div>img{ width:2rem; height:2rem; margin:0 auto 0.2rem; }
+		
+		.winningLetters{ width:100%; height:1.56rem; padding:0.36rem 0.5rem; box-sizing:border-box; background:#fff; border-top:1px solid #eaeaea; border-bottom:1px solid #eaeaea; margin-bottom:0.4rem; }
+		.winningLetters>img{ width:2.94rem; height:0.84rem; float:left; margin-right:0.4rem; }
+		.winningLetters>div{ width:9.376rem; height:1.22rem; font:0.48rem/1.22rem "微软雅黑"; color:#545454; float:left; overflow:hidden; position:relative; margin-top:-0.18rem; }
+		.winningLetters>div ul{ width:100%; height:auto; position:absolute; top:0; left:0; }
+		.winningLetters>div ul li{ width:100%; height:1.22rem; }
+		
+		.exchange{ width:100%; height:auto; padding:0.76rem 0; background:#fff; text-align:center; border-top:1px solid #eaeaea; border-bottom:1px solid #eaeaea; overflow:hidden; }
+		.exchange>h2{ width:100%; height:auto; font:0.56rem "微软雅黑"; color:#4c4c4c; }
+		.exchange>div{ display:inline-block; width:45%; height:auto; margin-top:0.6rem; }
+		.exchange>div>img{ width:6.36rem; height:2.8rem; margin-bottom:0.5rem; }
+		.exchange>div>p{ font:0.56rem "微软雅黑"; color:4c4c4c; }
+		.exchange>div>p>img{ width:0.6rem; height:0.6rem; margin:0 0.2rem 0 0.56rem; }
+	</style>
+</head>
+<body>
+	<div id="container">
+		<header>
+			<div><img src="../../static/img/package2/userLogo.png" id="userLogo" /></div>
+			<h1>我的积分: <span id="peasCount"></span><img src="../../static/img/package2/peasWhite.png"/></h1>
+		</header>
+		<div class="RC">
+			<div id="recordPage">
+				<img src="../../static/img/package2/conversionR.png"/>
+				<span>兑换记录</span>
+			</div>
+			<div id="peasCJ">
+				<img src="../../static/img/package2/lotteryDraw.png" />
+				<span>融豆抽奖</span>
+			</div>
+		</div>
+		<div class="nav">
+			<div id="getNewCut">
+				<img src="../../static/img/package2/GetNewCut.png" />
+				<p>获取新口子</p>
+			</div>
+			<div id="CreditReportingQueries">
+				<img src="../../static/img/package2/CreditReportingQueries.png" />
+				<p>网贷征信查询</p>
+			</div>
+			<div id="PlatformCreditEnquiry">
+				<img src="../../static/img/package2/PlatformCreditEnquiry.png" />
+				<p>平台征信查询</p>
+			</div>
+			<div id="everydayTask">
+				<img src="../../static/img/package2/everydayTask.png" />
+				<p>每日任务</p>
+			</div>
+		</div>
+		<div class="winningLetters">
+			<img src="../../static/img/package2/winningLetters.png" />
+			<div>
+				<ul id="carousel">
+					
+				</ul>
+			</div>
+		</div>
+		<div class="exchange">
+			<h2>精品兑换</h2>
+			<div name="1" id="yuan1">
+				<img src="../../static/img/package2/1$tariffe.png" />
+				<p>1元话费券<img src="../../static/img/package2/peasYellow.png"/>100</p>
+			</div>
+			<div name="4" id="yuan10">
+				<img src="../../static/img/package2/10$tariffe.png" />
+				<p>10元话费券<img src="../../static/img/package2/peasYellow.png"/>1000</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" src="../../static/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/js/lib/DataAlgorithm.js"></script>
+<script type="text/javascript" src="../../static/js/package2/shoppingMall.js"></script>
